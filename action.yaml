@@ -1,0 +1,29 @@
+name: 'Go Coverage Action'
+description: 'Runs go-acc for accurate test coverage'
+author: 'jamesrom'
+inputs:
+  hard_target:
+    description: 'The minimum coverage acceptable'
+    required: false
+    default: "80"
+  soft_target:
+    description: 'The ideal coverage target, will warn below this'
+    required: false
+    default: "0"
+  ignore:
+    description: 'Comma separated list of package paths to ignore'
+    required: false
+    default: ""
+  enable_soft_target_warning:
+    description: 'Comment on the triggering PR with a warning message'
+    required: false
+    default: "true"
+outputs:
+  coverage:
+    description: 'Percent total test coverage'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'pie-chart'
+  color: 'gray-dark'
