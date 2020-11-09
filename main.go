@@ -12,7 +12,6 @@ import (
 
 var softTarget float64
 var hardTarget float64
-var enableWarningComment bool
 
 // get and parse env vars
 func init() {
@@ -30,14 +29,6 @@ func init() {
 		panic("Environment variable '$INPUT_SOFT_TARGET' not found")
 	}
 	softTarget, err = strconv.ParseFloat(t, 64)
-	if err != nil {
-		panic(err)
-	}
-	t = os.Getenv("ENABLE_SOFT_TARGET_WARNING")
-	if t == "" {
-		panic("Environment variable '$ENABLE_SOFT_TARGET_WARNING' not found")
-	}
-	enableWarningComment, err = strconv.ParseBool(t)
 	if err != nil {
 		panic(err)
 	}
