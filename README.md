@@ -14,8 +14,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      fetch-depth: 1
     - name: Run coverage tool
-      uses: anz-bank/go-acc
+      uses: anz-bank/go-acc@v0.1.0
       with:
         soft_target: 90
         hard_target: 80
