@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path"
 	"regexp"
 	"strconv"
 	"strings"
@@ -12,6 +13,7 @@ import (
 
 var softTarget float64
 var hardTarget float64
+var ignore []string
 
 // get and parse env vars
 func init() {
@@ -32,6 +34,8 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
+	t = os.Getenv("IGNORE")
+	ignore = strings.Split(t, ",")
 }
 
 func main() {
@@ -62,7 +66,15 @@ func main() {
 			}
 			continue
 		}
-
+		skip := false
+		for _, e := range ignore {
+			if a, _ := path.Match(e+"*", file); a {
+				skip = true
+			}
+		}
+		if skip == true {
+			continue
+		}
 		// if the function is not covered by tests at all, write a warning
 		if pct == 0 {
 			fmt.Printf("::warning file=%s,line=%s::'%s' not covered by tests\n", file, line, fn)
