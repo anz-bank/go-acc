@@ -14,6 +14,10 @@ inputs:
     description: 'Comma separated list of package paths to ignore'
     required: false
     default: ""
+  flags:
+    description: 'go test flags'
+    required: false
+    default: ""
 outputs:
   coverage:
     description: 'Percent total test coverage'
