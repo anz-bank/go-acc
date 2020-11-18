@@ -68,11 +68,11 @@ func main() {
 		}
 		skip := false
 		for _, e := range ignore {
-			if a, _ := path.Match(e+"*", file); a {
+			if a, _ := path.Match(e+"*", file); e != "" && a {
 				skip = true
 			}
 		}
-		if skip == true {
+		if skip {
 			continue
 		}
 		// if the function is not covered by tests at all, write a warning
