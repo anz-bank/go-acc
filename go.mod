@@ -1,3 +1,3 @@
 module github.com/anz-bank/go-acc
 
-go 1.15
+go 1.16
