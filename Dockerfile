@@ -1,4 +1,4 @@
-FROM golang:1.15-buster
+FROM golang:1.16-buster
 
 ENV GO111MODULE=on
 RUN go get github.com/ory/go-acc
